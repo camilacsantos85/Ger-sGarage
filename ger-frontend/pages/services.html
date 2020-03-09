@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./src/dist/css/styles.css">
+    <link rel="stylesheet" href="../src/dist/css/bootstrap.min.css  ">
+    <title>Garage</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Ger's Garage</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <a class="nav-item nav-link active" href="/pages/services.html">Services</a>
+            <a data-authorize='["admin"]' class="nav-item nav-link active" href="/pages/admin.html">Administration</a>
+            <a class="nav-item nav-link active" href="/pages/vehicles.html">Vehicles</a>
+          </ul>
+          <div class="my-2 my-lg-0">
+            <a class="nav-item nav-link active text-white" href="#" id="sign-out">Sign out</a>
+          </div>
+        </div>
+      </nav>
+
+    <div class="container my-5 text-center">
+        <h1>Services</h1>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-md-12">
+
+                <ul class="nav nav-tabs" role="tablist" id="admin-nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#schedule" role="tab"
+                            aria-controls="employees" aria-selected="true">Schedule</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#my-services" role="tab" aria-controls="my-services"
+                            aria-selected="false">My Bookings</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <form id="service-details" action="./service-details.html" method="GET">
+            <input type="hidden" name="service_id" id="service-id">
+          </form>
+
+        <div class="tab-content">
+            <div class="tab-pane fade show active mt-5" id="schedule" role="tabpanel" aria-labelledby="schedule-tab">
+                <form id="service-form">
+
+
+                    <div class="container p-3 shadow rounded my-5">
+
+                        <h2>Schedule Info</h2>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="customer-name">Date</label>
+                                    <input id="schedule-date" type="date" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                                <div class="alert alert-danger" role="alert" id="sunday-alert">Ger's garage is closed on Sundays</div>
+                            </div>
+
+                        </div>
+                    </div>
+                  
+                    <div class="container p-3 shadow rounded my-5">
+                        <h2>Vehicle</h2>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="vehicle-license">License</label>
+                                    <select id="vehicle-license" class="form-control">
+                                        <option selected disabled>Select the car by license</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container p-3 shadow rounded my-5">
+                        <h2>Service info</h2>
+
+                        <div class="row">
+                            <div class="col-6">
+
+                                <div class="form-group">
+                                    <label for="service-type">Type</label>
+                                    <select id="service-type" class="form-control">
+                                        <option disabled selected>Select the sevice type</option>
+                                        <option value="Annual Service">Annual Service</option>
+                                        <option value="Major Service">Major Service</option>
+                                        <option value="Repair / Fault">Repair / Fault</option>
+                                        <option value="Major Repair">Major Repair</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="comment">Comment</label>
+                                    <textarea id="comment" cols="15" rows="5" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="alert alert-danger" role="alert" id="form-alert">Invalid service</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                                <div class="alert alert-success" id="success-alert" role="alert" id="created-alert">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                                <button class="btn btn-success btn-block">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane fade show mt-5" id="my-services" role="tab" aria-labelledby="my-services">
+                <div class="container">
+                    <div class="row">
+                      <div class="col-6">
+                        <h2 class="mb-4">Services</h2>
+                      </div>
+                    </div>
+        
+                    <div class="row">
+                      <div class="col-12">
+                        <table class="table table-striped table-bordered">
+                          <thead>
+                            <tr>
+                              <td>Date</td>
+                              <td>Allocated to</td>
+                              <td>License</td>
+                              <td>Status</td>
+                              <td>Options</td>
+                            </tr>
+                          </thead>
+                          <tbody id="my-services-tbody">
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+        <form id="service-details" action="./service-details.html" method="GET">
+            <input type="hidden" name="service_id" id="service-id">
+          </form>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+        <script src="/src/dist/js/lib/jquery.min.js"></script>
+        <script src="/src/dist/js/access.js"></script>
+        <script src="/src/dist/js/service.js"></script>
+        <script src="/src/dist/js/signout.js"></script>
+</body>
+
+</html>

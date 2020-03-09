@@ -1,0 +1,17 @@
+body, html {
+    min-height: 100vh;
+    min-width: 100vw;
+    height: 100%;
+    width: 100%;
+}
+
+.display-none {
+    display: none !important;
+}
+
+.carousel-img {
+    margin: auto;
+    
+    max-width: 800px;
+    max-height: 900px;
+}
